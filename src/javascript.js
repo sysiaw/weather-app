@@ -48,17 +48,20 @@ function showDate() {
 showDate();
 
 //Search button & Temperature
-function searchCity(event) {
-  event.preventDefault();
-  let input = document.querySelector("#search-bar");
-
+function findCity(city) {
   let apiKey = "fd6d027787299da7fc57a8ab3840d713";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCityTemperature);
 }
 
+function searchButton(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-bar").value;
+  findCity(city);
+}
+
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", searchCity);
+form.addEventListener("submit", searchButton);
 
 function showCityTemperature(response) {
   let cityTemperature = Math.round(response.data.main.temp);
@@ -105,4 +108,4 @@ function showCurrentPosition() {
 let button = document.querySelector("#home-button");
 button.addEventListener("click", showCurrentPosition);
 
-showCurrentPosition();
+findCity("Malacca");

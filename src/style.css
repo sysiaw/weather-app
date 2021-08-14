@@ -76,3 +76,7 @@ button#degrees-celsius,
   display: block;
   margin: 0 auto;
 }
+
+#footer {
+  font-size: 16px;
+}

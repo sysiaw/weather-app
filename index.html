@@ -39,6 +39,8 @@
               class="form-control"
               id="search-bar"
               placeholder="Enter a city"
+              autocomplete="off"
+              autofocus="on"
             />
           </div>
           <div class="col-auto">
@@ -55,8 +57,8 @@
       <div class="row g-2">
         <div class="col-12">
           <h1>
-            <span id="city-name">Malacca</span>,
-            <span id="country-code">MY</span>
+            <span id="city-name"></span>,
+            <span id="country-code"></span>
           </h1>
         </div>
         <div class="col-4">
@@ -64,26 +66,27 @@
 
           <div class="card today">
             <div class="card-body">
-              <h4><span id="full-date">20 July 2021 (Tue)</span></h4>
-              <h4><span id="time">8:00 a.m.</span></h4>
-              <h4><span id="weather-description">Mostly sunny</span></h4>
+              <h4><span id="full-date"></span></h4>
+              <h4><span id="time"></span></h4>
+              <h4><span id="weather-description"></span></h4>
               <img src="images/cloud and sun.png" alt="cloudy with sun" />
               <h3>
-                <span id="temperature-today">26</span>
-                <button id="degrees-celsius">°C</button> |<button
+                <span id="temperature-today"></span>
+                <a href="#" id="degrees-celsius" class="active">°C</a> |<a
+                  href="#"
                   id="degrees-fahrenheit"
                 >
                   °F
-                </button>
+                </a>
               </h3>
               <p>
-                Max: <span id="max-temp-today">31</span> °C
+                Max: <span id="max-temp-today"></span> °C
                 <br />
-                Min: <span id="min-temp-today">26</span> °C
+                Min: <span id="min-temp-today"></span> °C
                 <br />
-                Humidity: <span id="humidity">13</span>%
+                Humidity: <span id="humidity"></span>%
                 <br />
-                Wind: <span id="wind-speed">0</span> m/s
+                Wind: <span id="wind-speed"></span> m/s
               </p>
             </div>
           </div>

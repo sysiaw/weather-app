@@ -28,21 +28,19 @@ p {
   margin: 10px 0 0 0;
 }
 
-button {
-  display: inline;
-}
-
-button#degrees-celsius,
+#degrees-celsius,
 #degrees-fahrenheit {
-  border: none;
-  background: transparent;
+  text-decoration: none;
   transition: all 150ms ease-in-out;
 }
 
-#degrees-celsius:hover,
-#degrees-fahrenheit:hover {
-  color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+.active {
+  color: black;
+  cursor: default;
+}
+
+.active:hover {
+  color: black;
 }
 
 .btn {

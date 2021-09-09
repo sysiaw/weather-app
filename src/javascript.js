@@ -64,6 +64,7 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchButton);
 
 function showCityTemperature(response) {
+  console.log(response.data);
   celsiusTemperature = response.data.main.temp;
   let cityTemperature = Math.round(response.data.main.temp);
 

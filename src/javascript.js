@@ -80,9 +80,11 @@ function showCityTemperature(response) {
   let currentTemperature = document.querySelector("#temperature-today");
   currentTemperature.innerHTML = cityTemperature;
 
+  maxCelsiusTemperature = response.data.main.temp_max;
   let maxTemp = document.querySelector("#max-temp-today");
   maxTemp.innerHTML = Math.round(response.data.main.temp_max);
 
+  minCelsiusTemperature = response.data.main.temp_min;
   let minTemp = document.querySelector("#min-temp-today");
   minTemp.innerHTML = Math.round(response.data.main.temp_min);
 
@@ -97,20 +99,37 @@ function displayFahrenheitTemperature(event) {
   event.preventDefault();
   celsiusButton.classList.remove("active");
   fahrenheitButton.classList.add("active");
+
   let temperatureElement = document.querySelector("#temperature-today");
+  let maxCelTemp = document.querySelector("#max-temp-today");
+  let minCelTemp = document.querySelector("#min-temp-today");
+
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let maxFTemp = (maxCelsiusTemperature * 9) / 5 + 32;
+  let minFTemp = (minCelsiusTemperature * 9) / 5 + 32;
+
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  maxCelTemp.innerHTML = Math.round(maxFTemp);
+  minCelTemp.innerHTML = Math.round(minFTemp);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   celsiusButton.classList.add("active");
   fahrenheitButton.classList.remove("active");
+
   let temperatureElement = document.querySelector("#temperature-today");
+  let maxCelTemp = document.querySelector("#max-temp-today");
+  let minCelTemp = document.querySelector("#min-temp-today");
+
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  maxCelTemp.innerHTML = Math.round(maxCelsiusTemperature);
+  minCelTemp.innerHTML = Math.round(minCelsiusTemperature);
 }
 
 let celsiusTemperature = null;
+let maxCelsiusTemperature = null;
+let minCelsiusTemperature = null;
 
 let fahrenheitButton = document.querySelector("#degrees-fahrenheit");
 fahrenheitButton.addEventListener("click", displayFahrenheitTemperature);

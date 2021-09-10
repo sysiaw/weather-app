@@ -75,7 +75,7 @@ function showCityTemperature(response) {
   country.innerHTML = `${response.data.sys.country}`;
 
   let description = document.querySelector("#weather-description");
-  description.innerHTML = `${response.data.weather[0].main}`;
+  description.innerHTML = `${response.data.weather[0].description}`;
 
   let currentTemperature = document.querySelector("#temperature-today");
   currentTemperature.innerHTML = cityTemperature;
@@ -93,6 +93,13 @@ function showCityTemperature(response) {
 
   let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed * 10) / 10;
+
+  let weatherIcon = document.querySelector("#icon");
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function displayFahrenheitTemperature(event) {

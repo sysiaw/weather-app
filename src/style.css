@@ -75,6 +75,10 @@ p {
   margin: 0 auto;
 }
 
+h4:first-letter {
+  text-transform: capitalize;
+}
+
 #footer {
   font-size: 16px;
 }

@@ -45,7 +45,6 @@ function showDate() {
   let formatTime = document.querySelector("#time");
   formatTime.innerHTML = `${currentHour}:${currentMinute} ${ampm}`;
 }
-showDate();
 
 //Search button & Temperature
 function findCity(city) {
@@ -100,6 +99,10 @@ function showCityTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
+
+  let timezoneMilliseconds = response.data.timezone * 1000;
+  let dateElement = document.querySelector("#full-date");
+  dateElement.innerHTML = formatDate(timezoneMilliseconds);
 }
 
 function displayFahrenheitTemperature(event) {
@@ -163,3 +166,10 @@ let button = document.querySelector("#home-button");
 button.addEventListener("click", showCurrentPosition);
 
 findCity("Malacca");
+
+function formatDate(timestamp) {
+  let utcDate = new Date().getTime();
+
+  let localDate = new Date(utcDate + timestamp);
+  console.log(localDate.getUTCHours());
+}

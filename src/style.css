@@ -50,9 +50,10 @@ p {
 
 .card {
   display: block;
-  margin: 0 10px 16px 0;
+  margin: 0 10px 20px 0;
   padding: 0 0 0 10px;
   border: 2px solid black;
+  border-radius: 10px;
 }
 
 .this-week h3 {
@@ -66,7 +67,9 @@ p {
 .today img {
   width: 180px;
   display: block;
-  padding: 20px 10px;
+  padding: 3px 5px;
+  position: relative;
+  top: -13px;
 }
 
 .this-week img {
@@ -77,6 +80,15 @@ p {
 
 h4:first-letter {
   text-transform: capitalize;
+}
+
+#date {
+  line-height: 40px;
+}
+
+#weather-description {
+  position: relative;
+  top: -6px;
 }
 
 #footer {

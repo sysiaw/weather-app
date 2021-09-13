@@ -1,12 +1,12 @@
 //Date and Time
-function showDate() {
-  let now = new Date();
-
-  let currentDate = now.getDate();
-  let currentYear = now.getFullYear();
+function formatDate(timestamp) {
+  let utcDate = new Date().getTime();
+  let localTime = new Date(utcDate + timestamp);
+  let localDate = localTime.getUTCDate();
+  let localYear = localTime.getUTCFullYear();
 
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let currentDay = days[now.getDay()];
+  let localDay = days[localTime.getUTCDay()];
 
   let months = [
     "Jan",
@@ -22,28 +22,29 @@ function showDate() {
     "Nov",
     "Dec",
   ];
-  let currentMonth = months[now.getMonth()];
 
-  let formatDate = document.querySelector("#full-date");
-  formatDate.innerHTML = `${currentDate} ${currentMonth} ${currentYear} (${currentDay})`;
+  let localMonth = months[localTime.getUTCMonth()];
 
-  let currentHour = now.getHours();
-  if (currentHour > 12) {
-    currentHour = currentHour - 12;
+  let localHour = localTime.getUTCHours();
+  if (localHour > 12) {
+    localHour = localHour - 12;
+  }
+
+  if (localHour < 10) {
+    localHour = `0${localHour}`;
   }
 
   let ampm = "a.m.";
-  if (now.getHours() >= 12) {
+  if (localTime.getUTCHours() >= 12) {
     ampm = "p.m.";
   }
 
-  let currentMinute = now.getMinutes();
-  if (currentMinute < 10) {
-    currentMinute = "0" + currentMinute;
+  let localMinute = localTime.getUTCMinutes();
+  if (localMinute < 10) {
+    localMinute = "0" + localMinute;
   }
 
-  let formatTime = document.querySelector("#time");
-  formatTime.innerHTML = `${currentHour}:${currentMinute} ${ampm}`;
+  return `${localDate} ${localMonth} ${localYear} (${localDay})<br/>${localHour}:${localMinute} ${ampm}`;
 }
 
 //Search button & Temperature
@@ -101,7 +102,7 @@ function showCityTemperature(response) {
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
 
   let timezoneMilliseconds = response.data.timezone * 1000;
-  let dateElement = document.querySelector("#full-date");
+  let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(timezoneMilliseconds);
 }
 
@@ -166,10 +167,3 @@ let button = document.querySelector("#home-button");
 button.addEventListener("click", showCurrentPosition);
 
 findCity("Malacca");
-
-function formatDate(timestamp) {
-  let utcDate = new Date().getTime();
-
-  let localDate = new Date(utcDate + timestamp);
-  console.log(localDate.getUTCHours());
-}

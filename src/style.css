@@ -50,32 +50,30 @@ p {
 
 .card {
   display: block;
-  margin: 0 10px 20px 0;
+  margin: 0 10px 30px 0;
   padding: 0 0 0 10px;
   border: 2px solid black;
   border-radius: 10px;
 }
 
-.this-week h3 {
+.forecast-week h3 {
   font-size: 28px;
+  position: relative;
+  top: 5px;
 }
 
-.this-week h4 {
+.forecast-week h4 {
   display: inline-block;
+  text-align: center;
+  position: relative;
+  top: 5px;
 }
 
 .today img {
-  width: 180px;
+  width: 200px;
   display: block;
-  padding: 3px 5px;
   position: relative;
   top: -13px;
-}
-
-.this-week img {
-  width: 60px;
-  display: block;
-  margin: 0 auto;
 }
 
 h4:first-letter {
@@ -92,5 +90,6 @@ h4:first-letter {
 }
 
 #footer {
+  margin-top: 0;
   font-size: 16px;
 }

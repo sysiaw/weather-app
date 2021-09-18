@@ -1,4 +1,3 @@
-//Date and Time
 function formatDate(timestamp) {
   let utcDate = new Date().getTime();
   let localTime = new Date(utcDate + timestamp);
@@ -47,7 +46,43 @@ function formatDate(timestamp) {
   return `${localDate} ${localMonth} ${localYear} (${localDay})<br/>${localHour}:${localMinute} ${ampm}`;
 }
 
-//Search button & Temperature
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = ``;
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3">
+                  <h4><span class="forecast-date">${day}</span></h4>
+                </div>
+                <div class="col-4">
+                  <img
+                    src="images/cloud and sun.png"
+                    alt="cloudy with sun"
+                    width="60px"
+                  />
+                </div>
+                <div class="col-5">
+                  <h3>
+                    <span class="forecast-max-temp">32°</span> /
+                    <span class="forecast-min-temp">26°</span>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+              `;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function findCity(city) {
   let apiKey = "fd6d027787299da7fc57a8ab3840d713";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -137,18 +172,6 @@ function displayCelsiusTemperature(event) {
   minCelTemp.innerHTML = Math.round(minCelsiusTemperature);
 }
 
-let celsiusTemperature = null;
-let maxCelsiusTemperature = null;
-let minCelsiusTemperature = null;
-
-let fahrenheitButton = document.querySelector("#degrees-fahrenheit");
-fahrenheitButton.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusButton = document.querySelector("#degrees-celsius");
-celsiusButton.addEventListener("click", displayCelsiusTemperature);
-
-//Home button & Current Location
-
 function showLocation(position) {
   let apiKey = "fd6d027787299da7fc57a8ab3840d713";
   let latitude = position.coords.latitude;
@@ -165,4 +188,15 @@ function showCurrentPosition() {
 let button = document.querySelector("#home-button");
 button.addEventListener("click", showCurrentPosition);
 
+let celsiusTemperature = null;
+let maxCelsiusTemperature = null;
+let minCelsiusTemperature = null;
+
+let fahrenheitButton = document.querySelector("#degrees-fahrenheit");
+fahrenheitButton.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusButton = document.querySelector("#degrees-celsius");
+celsiusButton.addEventListener("click", displayCelsiusTemperature);
+
 findCity("Malacca");
+displayForecast();

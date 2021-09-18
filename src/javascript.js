@@ -46,38 +46,55 @@ function formatDate(timestamp) {
   return `${localDate} ${localMonth} ${localYear} (${localDay})<br/>${localHour}:${localMinute} ${ampm}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
   console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = ``;
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="card">
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="card">
             <div class="card-body">
               <div class="row">
                 <div class="col-3">
-                  <h4><span class="forecast-date">${day}</span></h4>
+                  <h4><span class="forecast-date">${formatDay(
+                    forecastDay.dt
+                  )}</span></h4>
                 </div>
                 <div class="col-4">
                   <img
-                    src="images/cloud and sun.png"
+                    src="http://openweathermap.org/img/wn/${
+                      forecastDay.weather[0].icon
+                    }@2x.png"
                     alt="cloudy with sun"
-                    width="60px"
                   />
                 </div>
                 <div class="col-5">
                   <h3>
-                    <span class="forecast-max-temp">32°</span> /
-                    <span class="forecast-min-temp">26°</span>
+                    <span class="forecast-max-temp">${Math.round(
+                      forecastDay.temp.max
+                    )}°</span> /
+                    <span class="forecast-min-temp">${Math.round(
+                      forecastDay.temp.min
+                    )}°</span>
                   </h3>
                 </div>
               </div>
             </div>
           </div>
               `;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;

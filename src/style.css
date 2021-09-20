@@ -54,6 +54,7 @@ p {
   padding: 0 0 0 10px;
   border: 2px solid black;
   border-radius: 10px;
+  background: transparent;
 }
 
 .forecast-week h3 {
@@ -86,6 +87,11 @@ p {
 
 h4:first-letter {
   text-transform: capitalize;
+}
+
+#home-button {
+  font-weight: bold;
+  border: 2px solid;
 }
 
 #date {

@@ -25,6 +25,7 @@ function formatDate(timestamp) {
   let localMonth = months[localTime.getUTCMonth()];
 
   let localHour = localTime.getUTCHours();
+
   if (localHour > 12) {
     localHour = localHour - 12;
   }
@@ -34,7 +35,7 @@ function formatDate(timestamp) {
   }
 
   let ampm = "a.m.";
-  if (localTime.getUTCHours() >= 12) {
+  if (localTime.getUTCHours() >= 12 && localTime.getUTCHours() < 23) {
     ampm = "p.m.";
   }
 
@@ -55,7 +56,6 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
@@ -77,7 +77,7 @@ function displayForecast(response) {
                     src="http://openweathermap.org/img/wn/${
                       forecastDay.weather[0].icon
                     }@2x.png"
-                    alt="cloudy with sun"
+                    alt=""
                   />
                 </div>
                 <div class="col-5">

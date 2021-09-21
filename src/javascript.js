@@ -110,6 +110,8 @@ function searchButton(event) {
   event.preventDefault();
   let city = document.querySelector("#search-bar").value;
   findCity(city);
+  celsiusButton.classList.add("active");
+  fahrenheitButton.classList.remove("active");
 }
 
 function getForecast(coordinates) {

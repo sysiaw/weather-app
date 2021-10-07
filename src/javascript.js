@@ -100,10 +100,37 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function backgroundColor(response) {
+  let body = document.querySelector("body");
+  let timeNow = Date.now();
+
+  let sunRise = response.data.sys.sunrise * 1000;
+  let sunSet = response.data.sys.sunset * 1000;
+
+  if (timeNow === sunRise) {
+    body.classList.remove("nightTime", "dayTime", "sunset");
+    body.classList.add("sunrise");
+  } else {
+    if (timeNow > sunRise && timeNow < sunSet) {
+      body.classList.remove("sunrise", "sunset", "nightTime");
+      body.classList.add("dayTime");
+    } else {
+      if (timeNow === sunSet) {
+        body.classList.remove("dayTime", "nightTime", "sunrise");
+        body.classList.add("sunset");
+      } else {
+        body.classList.remove("sunset", "sunrise", "dayTime");
+        body.classList.add("nightTime");
+      }
+    }
+  }
+}
+
 function findCity(city) {
   let apiKey = "fd6d027787299da7fc57a8ab3840d713";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCityTemperature);
+  axios.get(apiUrl).then(backgroundColor);
 }
 
 function searchButton(event) {
@@ -204,6 +231,7 @@ function showLocation(position) {
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCityTemperature);
+  axios.get(apiUrl).then(backgroundColor);
 }
 
 function showCurrentPosition() {

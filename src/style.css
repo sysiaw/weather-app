@@ -34,6 +34,41 @@ p {
   transition: all 150ms ease-in-out;
 }
 
+.sunrise {
+  background: linear-gradient(
+    75.2deg,
+    rgb(41, 196, 255) -2.5%,
+    rgb(255, 158, 211) 55%,
+    rgb(255, 182, 138) 102.3%
+  );
+}
+
+.dayTime {
+  background: linear-gradient(
+    89.2deg,
+    rgb(191, 241, 236) 22.3%,
+    rgb(109, 192, 236) 84.1%
+  );
+}
+
+.sunset {
+  background: linear-gradient(
+    96.2deg,
+    rgb(255, 230, 112) 10.4%,
+    rgb(255, 100, 100) 43.8%,
+    rgb(0, 93, 219) 105.8%
+  );
+}
+
+.nightTime {
+  background: linear-gradient(
+    181deg,
+    rgb(2, 0, 97) 15%,
+    rgb(97, 149, 219) 158.5%
+  );
+  color: #e7eaf6;
+}
+
 .active {
   color: black;
   cursor: default;

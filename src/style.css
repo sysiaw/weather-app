@@ -28,12 +28,6 @@ p {
   margin: 10px 0 0 0;
 }
 
-#degrees-celsius,
-#degrees-fahrenheit {
-  text-decoration: none;
-  transition: all 150ms ease-in-out;
-}
-
 .sunrise {
   background: linear-gradient(
     75.2deg,
@@ -53,10 +47,10 @@ p {
 
 .sunset {
   background: linear-gradient(
-    96.2deg,
-    rgb(255, 230, 112) 10.4%,
-    rgb(255, 100, 100) 43.8%,
-    rgb(0, 93, 219) 105.8%
+    110.6deg,
+    rgb(255, 237, 50) 6.3%,
+    rgb(255, 102, 114) 61.7%,
+    rgb(145, 75, 143) 90.6%
   );
 }
 
@@ -69,13 +63,12 @@ p {
   color: #e7eaf6;
 }
 
-.active {
-  color: black;
-  cursor: default;
+.nightTime a {
+  color: #1dced8;
 }
 
-.active:hover {
-  color: black;
+.nightTime .card {
+  border: 2px solid white;
 }
 
 .btn {
@@ -141,4 +134,5 @@ h4:first-letter {
 #footer {
   margin-top: 0;
   font-size: 16px;
+  font-weight: bold;
 }

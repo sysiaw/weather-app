@@ -67,7 +67,8 @@ p {
   color: #1dced8;
 }
 
-.nightTime .card {
+.nightTime .content,
+.nightTime .forecast-content {
   border: 2px solid white;
 }
 
@@ -76,41 +77,39 @@ p {
   font-size: 18px;
 }
 
-.card {
-  display: block;
-  margin: 0 10px 19px 0;
-  padding: 0 0 0 10px;
+.content {
+  margin: 15px 10px 10px 0;
+  padding: 24px;
   border: 2px solid black;
   border-radius: 10px;
   background: transparent;
 }
 
-.forecast-week h3 {
-  font-size: 24px;
-  position: relative;
-  top: 13px;
-}
-
-.forecast-week h4 {
-  font-size: 26px;
-  display: inline-block;
+.forecast-content {
   text-align: center;
-  position: relative;
-  top: 13px;
+  margin: 15px 10px 17px 0;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background: transparent;
 }
 
-.forecast-week img {
-  width: 55px;
-  display: block;
-  margin: 0 auto;
-  padding: none;
+#forecast h3 {
+  font-size: 24px;
+  margin-top: 14px;
+}
+
+#forecast h4 {
+  font-size: 26px;
+  margin-top: 14px;
+}
+
+#forecast img {
+  width: 60px;
 }
 
 .today img {
   width: 200px;
-  display: block;
-  position: relative;
-  top: -13px;
 }
 
 h4:first-letter {
@@ -126,13 +125,7 @@ h4:first-letter {
   line-height: 40px;
 }
 
-#weather-description {
-  position: relative;
-  top: -6px;
-}
-
 #footer {
-  margin-top: 0;
   font-size: 16px;
   font-weight: bold;
 }

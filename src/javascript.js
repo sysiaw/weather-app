@@ -64,9 +64,8 @@ function displayForecast(response) {
     if (index > 0 && index < 6) {
       forecastHTML =
         forecastHTML +
-        `<div class="card">
-            <div class="card-body">
-              <div class="row">
+        `<div class="forecast-content">
+             <div class="row d-flex justify-content-around">
                 <div class="col-3">
                   <h4><span class="forecast-date">${formatDay(
                     forecastDay.dt
@@ -92,7 +91,6 @@ function displayForecast(response) {
                 </div>
               </div>
             </div>
-          </div>
               `;
     }
   });
